@@ -146,7 +146,7 @@ extends Screen {
             ctx.drawTextWithShadow(this.textRenderer, sign, px + pw - 9, curY + 3, -2565912);
             curY += 15;
             if (!mod.isExpanded()) continue;
-            List visibleSettings = mod.getSettings().stream().filter(Setting::isVisible).collect(Collectors.toList());
+            List<Setting<?>> visibleSettings = mod.getSettings().stream().filter(Setting::isVisible).collect(Collectors.toList());
             for (Setting setting : visibleSettings) {
                 this.renderNovaSetting(ctx, setting, px + 2, curY, pw - 4);
                 curY += 14;
@@ -252,7 +252,7 @@ extends Screen {
                 }
                 curY += 15;
                 if (!mod.isExpanded()) continue;
-                List visibleSettings = mod.getSettings().stream().filter(Setting::isVisible).collect(Collectors.toList());
+                List<Setting<?>> visibleSettings = mod.getSettings().stream().filter(Setting::isVisible).collect(Collectors.toList());
                 int sx = px + 2;
                 int sw = pw - 4;
                 for (Setting setting : visibleSettings) {
