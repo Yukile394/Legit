@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "legit",
+  "version": "${version}",
+  "name": "Legit",
+  "description": "Legit - combat utility, aim assist, TriggerBot and client HUD for Fabric 1.21.1",
+  "authors": [
+    "Legit Dev"
+  ],
+  "license": "All-Rights-Reserved",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.legit.client.LegitClient"
+    ]
+  },
+  "mixins": [
+    "legit.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "minecraft": "~${minecraft_version}",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
