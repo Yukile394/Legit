@@ -39,14 +39,14 @@ public class MixinEntity {
         if (esp == null || !esp.isEnabled() || !esp.glowOutline.isEnabled()) {
             return;
         }
-        Entity self = (Entity)this;
+        Entity self = (Entity)(Object)this;
         MinecraftClient mc = MinecraftClient.getInstance();
         if (mc == null || mc.player == null || self == mc.player) {
             return;
         }
         if (self instanceof PlayerEntity || self instanceof HostileEntity && esp.includeMobs.isEnabled()) {
             int argb = esp.getRedColor(mc.player.distanceTo(self));
-            cir.setReturnValue((Object)(argb & 0xFFFFFF));
+            cir.setReturnValue(argb & 0xFFFFFF);
         }
     }
 
@@ -60,13 +60,13 @@ public class MixinEntity {
         if (hb == null || !hb.isEnabled()) {
             return;
         }
-        Entity self = (Entity)this;
+        Entity self = (Entity)(Object)this;
         MinecraftClient mc = MinecraftClient.getInstance();
         if (mc == null || mc.player == null || self == mc.player) {
             return;
         }
         if (self instanceof PlayerEntity || !hb.playersOnly.isEnabled() && self instanceof LivingEntity) {
-            cir.setReturnValue((Object)Float.valueOf(((Double)hb.expandSize.getValue()).floatValue()));
+            cir.setReturnValue(Float.valueOf(((Double)hb.expandSize.getValue()).floatValue()));
         }
     }
 }
