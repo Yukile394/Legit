@@ -32,7 +32,7 @@ public class MixinMinecraftClient {
     private void onClientTick(CallbackInfo ci) {
         LegitClient client = LegitClient.getInstance();
         if (client != null && client.getModuleManager() != null) {
-            client.getModuleManager().onTick((MinecraftClient)this);
+            client.getModuleManager().onTick((MinecraftClient)(Object)this);
         }
     }
 
@@ -47,7 +47,7 @@ public class MixinMinecraftClient {
         if (esp == null || !esp.isEnabled() || !esp.glowOutline.isEnabled()) {
             return;
         }
-        MinecraftClient mc = (MinecraftClient)this;
+        MinecraftClient mc = (MinecraftClient)(Object)this;
         if (mc.player == null || entity == mc.player || !entity.isAlive()) {
             return;
         }
@@ -56,9 +56,9 @@ public class MixinMinecraftClient {
             return;
         }
         if (entity instanceof PlayerEntity && !(p = (PlayerEntity)entity).isSpectator()) {
-            cir.setReturnValue((Object)true);
+            cir.setReturnValue(true);
         } else if (entity instanceof HostileEntity && esp.includeMobs.isEnabled()) {
-            cir.setReturnValue((Object)true);
+            cir.setReturnValue(true);
         }
     }
 }
